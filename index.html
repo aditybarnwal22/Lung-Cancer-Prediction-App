@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lung Cancer Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+
+    <!-- Logout Link -->
+    <div style="text-align:center; margin-top: 20px;">
+        <a href="/logout" style="color: #ff4d4d; font-size: 18px;">Logout</a>
+    </div>
+
+    <!-- Page Container -->
+    <div class="overlay">
+
+        <!-- Page Title -->
+        <div class="styled-heading">
+            <h2>Lung Cancer Prediction Form</h2>
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-container">
+            <form action="/predict" method="post">
+                <label for="gender">GENDER (0 = Female, 1 = Male):</label>
+                <input type="number" id="gender" name="GENDER" required>
+
+                <label for="age">AGE:</label>
+                <input type="number" id="age" name="AGE" required>
+
+                <label for="smoking">SMOKING:</label>
+                <input type="number" id="smoking" name="SMOKING" required>
+
+                <label for="yellow_fingers">YELLOW FINGERS:</label>
+                <input type="number" id="yellow_fingers" name="YELLOW_FINGERS" required>
+
+                <label for="anxiety">ANXIETY:</label>
+                <input type="number" id="anxiety" name="ANXIETY" required>
+
+                <label for="peer_pressure">PEER PRESSURE:</label>
+                <input type="number" id="peer_pressure" name="PEER_PRESSURE" required>
+
+                <label for="chronic_disease">CHRONIC DISEASE:</label>
+                <input type="number" id="chronic_disease" name="CHRONIC_DISEASE" required>
+
+                <label for="fatigue">FATIGUE:</label>
+                <input type="number" id="fatigue" name="FATIGUE" required>
+
+                <label for="allergy">ALLERGY:</label>
+                <input type="number" id="allergy" name="ALLERGY" required>
+
+                <label for="wheezing">WHEEZING:</label>
+                <input type="number" id="wheezing" name="WHEEZING" required>
+
+                <label for="alcohol">ALCOHOL CONSUMING:</label>
+                <input type="number" id="alcohol" name="ALCOHOL_CONSUMING" required>
+
+                <label for="coughing">COUGHING:</label>
+                <input type="number" id="coughing" name="COUGHING" required>
+
+                <label for="breath">SHORTNESS OF BREATH:</label>
+                <input type="number" id="breath" name="SHORTNESS_OF_BREATH" required>
+
+                <label for="swallowing">SWALLOWING DIFFICULTY:</label>
+                <input type="number" id="swallowing" name="SWALLOWING_DIFFICULTY" required>
+
+                <label for="chest_pain">CHEST PAIN:</label>
+                <input type="number" id="chest_pain" name="CHEST_PAIN" required>
+
+                <input type="submit" value="Predict">
+            </form>
+        </div>
+
+        <!-- Prediction Result -->
+        {% if prediction_text %}
+        <div class="result" style="text-align:center; margin-top: 20px;">
+            <h3>{{ prediction_text }}</h3>
+        </div>
+        {% endif %}
+        
+    </div>
+</body>
+</html>
