@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logout - Lung Cancer Prediction</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+  <div class="overlay">
+    <div class="styled-heading">
+      <h2>Logged Out</h2>
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+
+    </div>
+
+    <div class="form-container" style="text-align: center;">
+      <p style="font-size: 1.2rem; color: #fff; margin-bottom: 30px;">
+        You have been successfully logged out.
+      </p>
+
+      <a class="home-link" href="{{ url_for('home') }}">Home Page</a>
+    </div>
+  </div>
+</body>
+</html>
