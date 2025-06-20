@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lung Cancer Prediction - Home</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Reset & base */
+  * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    /* Base body and background */
+body {
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  color: #e0e7ff; /* light royal blue text */
+  background-color: #0b1e5b; /* dark royal blue background */
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:url('/static/lung_image.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15; /* subtle overlay */
+  z-index: -1;
+  filter: brightness(0.7) saturate(1.2);
+}
+
+/* Navbar */
+.navbar {
+  background: #1a237e; /* royal blue shade */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 50, 0.5);
+}
+.navbar a {
+  /* color: #bbdefb; light blue */
+  color:white;
+  font-weight: 700;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-size: 1.1rem;
+}
+.navbar a:hover {
+  background-color: #3949ab; /* lighter royal blue */
+  color: #e8eaf6; /* almost white */
+  box-shadow: 0 0 8px #7986cb;
+}
+
+/* Hero */
+.hero {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 0 2rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 700;
+  font-size: 3rem;
+  font-family: 'Poppins', sans-serif;
+  /* letter-spacing: 0.04em; */
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  margin: 3rem auto;
+  animation: typing 4s steps(40, end) 1s infinite alternate;
+}
+
+/* Typing Animation */
+@keyframes typing {
+  0% { width: 0 }
+  50% { width: 100% }
+  100% { width: 0 }
+}
+
+
+/* Cursor Blinking */
+/* @keyframes blink {
+  0%, 49% { border-color: #7986cb; }
+  50%, 100% { border-color: transparent; }
+} */
+
+
+
+
+
+/* Content */
+.content {
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  margin: auto;
+  background-color: rgba(30, 40, 100, 0.85); /* semi-transparent royal blue */
+  box-shadow: 0 8px 20px rgba(10, 20, 80, 0.7);
+  border-radius: 15px;
+  margin-top: -50px;
+  position: relative;
+  z-index: 1;
+  color: #c5cae9;
+}
+
+.section h2 {
+  color: #9fa8da;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #7986cb;
+  padding-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.section-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+.section-text {
+  flex: 1 1 50%;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.section-image {
+  flex: 1 1 45%;
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.section-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 100, 0.6);
+}
+.section-image:hover {
+  transform: scale(1.05);
+}
+
+/* Paragraphs */
+.section p {
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+  background: #1a237e;
+  /* color: #c5cae9; */
+  color:white;
+  text-align: center;
+  padding: 1.2rem 0;
+  font-size: 1rem;
+  box-shadow: inset 0 5px 10px rgba(0, 0, 80, 0.7);
+}
+
+
+    /* Responsive adjustments */
+    @media (max-width: 860px) {
+      .section-content {
+        flex-direction: column;
+      }
+      .section-text, .section-image {
+        flex: 1 1 100%;
+      }
+      .hero {
+        font-size: 2.4rem;
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+  <div class="nav-left">
+    <a href="{{ url_for('home') }}">Home</a>
+  </div>
+  <div class="nav-right">
+    <a href="{{ url_for('login') }}">Login</a>
+    <a href="{{ url_for('register') }}">Register</a>
+  </div>
+</nav>
+
+
+  <section class="hero">
+    Welcome to Lung Cancer Prediction
+  </section>
+
+  <main class="content">
+    <section class="section">
+      <h2>About Lung Cancer</h2>
+      <div class="section-content">
+        <div class="section-text">
+          <p>
+            Lung cancer is a malignant tumor characterized by uncontrolled cell growth in tissues of the lung. If left untreated, this growth can spread beyond the lung into nearby tissue or other parts of the body. The majority of lung cancer cases are linked to smoking, though non-smokers can also develop the disease due to factors like exposure to radon gas, secondhand smoke, air pollution, or genetic predispositions.
+          </p>
+          <p>
+            Common symptoms include persistent coughing, chest pain, shortness of breath, wheezing, coughing up blood, and unexplained weight loss. Because symptoms often don't appear until the disease is advanced, early detection is critical. Treatment options include surgery, radiation therapy, chemotherapy, targeted drug therapy, and immunotherapy.
+          </p>
+        </div>
+        <div class="section-image">
+          <img src="{{ url_for('static', filename='lung_cancer_illustration.jpg') }}" alt="Lung Cancer Illustration" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Our Prediction System</h2>
+      <div class="section-content">
+        <div class="section-text">
+          <p>
+            Our Lung Cancer Prediction System is a web-based platform designed to support early detection of lung cancer by analyzing user input data such as age, smoking habits, shortness of breath, fatigue, and other relevant medical conditions. By leveraging machine learning models trained on real medical datasets, the system evaluates patterns and indicators to provide a probability estimate of lung cancer presence.
+          </p>
+          <p>
+            This system is not intended to replace professional medical diagnosis, but rather to assist users in making informed decisions and encourage them to seek further evaluation if a high risk is detected. The tool is especially useful in regions with limited access to advanced medical diagnostics.
+          </p>
+        </div>
+        <div class="section-image">
+          <img src="{{ url_for('static', filename='lung_model.png') }}" alt="Prediction Model Image" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Lung Cancer Prediction. All rights reserved.
+  </footer>
+  
+</body>
+</html>

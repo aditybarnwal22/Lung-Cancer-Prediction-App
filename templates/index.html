@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lung Cancer Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+
+<body>
+
+<div style="text-align:center; margin-top: 20px;">
+    <a href="{{ url_for('logout') }}" style="color: #ff4d4d; font-size: 18px;">Logout</a>
+</div>
+
+<div class="overlay">
+    <div class="styled-heading">
+        <h2>Lung Cancer Prediction Form</h2>
+    </div>
+
+    <div class="form-container">
+        <form action="/predict" method="post">
+            <label for="GENDER">GENDER (2 = Male, 1 = Female):</label>
+            <input type="number" id="GENDER" name="GENDER" required>
+
+            <label for="AGE">AGE:</label>
+            <input type="number" id="AGE" name="AGE" required>
+
+            <label for="SMOKING">SMOKING (2 = Yes, 1 = No):</label>
+            <input type="number" id="SMOKING" name="SMOKING" required>
+
+            <label for="YELLOW_FINGERS">YELLOW FINGERS (2 = Yes, 1 = No):</label>
+            <input type="number" id="YELLOW_FINGERS" name="YELLOW_FINGERS" required>
+
+            <label for="ANXIETY">ANXIETY (2 = Yes, 1 = No):</label>
+            <input type="number" id="ANXIETY" name="ANXIETY" required>
+
+            <label for="PEER_PRESSURE">PEER PRESSURE (2 = Yes, 1 = No):</label>
+            <input type="number" id="PEER_PRESSURE" name="PEER_PRESSURE" required>
+
+            <label for="CHRONIC_DISEASE">CHRONIC DISEASE (2 = Yes, 1 = No):</label>
+            <input type="number" id="CHRONIC_DISEASE" name="CHRONIC_DISEASE" required>
+
+            <label for="FATIGUE">FATIGUE (2 = Yes, 1 = No):</label>
+            <input type="number" id="FATIGUE" name="FATIGUE" required>
+
+            <label for="ALLERGY">ALLERGY (2 = Yes, 1 = No):</label>
+            <input type="number" id="ALLERGY" name="ALLERGY" required>
+
+            <label for="WHEEZING">WHEEZING (2 = Yes, 1 = No):</label>
+            <input type="number" id="WHEEZING" name="WHEEZING" required>
+
+            <label for="ALCOHOL_CONSUMING">ALCOHOL CONSUMING (2 = Yes, 1 = No):</label>
+            <input type="number" id="ALCOHOL_CONSUMING" name="ALCOHOL_CONSUMING" required>
+
+            <label for="COUGHING">COUGHING (2 = Yes, 1 = No):</label>
+            <input type="number" id="COUGHING" name="COUGHING" required>
+
+            <label for="SHORTNESS_OF_BREATH">SHORTNESS OF BREATH (2 = Yes, 1 = No):</label>
+            <input type="number" id="SHORTNESS_OF_BREATH" name="SHORTNESS_OF_BREATH" required>
+
+            <label for="SWALLOWING_DIFFICULTY">SWALLOWING DIFFICULTY (2 = Yes, 1 = No):</label>
+            <input type="number" id="SWALLOWING_DIFFICULTY" name="SWALLOWING_DIFFICULTY" required>
+
+            <label for="CHEST_PAIN">CHEST PAIN (2 = Yes, 1 = No):</label>
+            <input type="number" id="CHEST_PAIN" name="CHEST_PAIN" required>
+
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+
+    {% if prediction_text %}
+    <div id="predictionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <div class="icon {{ 'positive' if 'Negative' in prediction_text else 'negative' }}">
+                {{ '✅' if 'Negative' in prediction_text else '⚠️' }}
+            </div>
+            <h2>Prediction Result</h2>
+            <p>{{ prediction_text }}</p>
+        </div>
+    </div>
+
+    <script>
+        function closeModal() {
+            const modal = document.getElementById("predictionModal");
+            modal.style.animation = "fadeOut 0.5s ease forwards";
+            setTimeout(() => modal.style.display = "none", 500);
+        }
+
+        window.onload = function () {
+            const modal = document.getElementById("predictionModal");
+            modal.style.display = "block";
+        };
+    </script>
+    {% endif %}
+</div>
+
+</body>
+</html>
